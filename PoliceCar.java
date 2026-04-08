@@ -1,34 +1,29 @@
-public class PoliceCar implements IsEmergency, IsLandVehicle {
-    private String model;
-    private int numberOfWheels;
-    private boolean hasPoliceLights;
+public class PoliceCar extends Vehicle implements LandVehicle, IsEmergency {
+    private int numWheels;
+    private String unitId;
 
-    public PoliceCar(String model, int numberOfWheels, boolean hasPoliceLights) {
-        this.model = model;
-        this.numberOfWheels = numberOfWheels;
-        this.hasPoliceLights = hasPoliceLights;
+    public PoliceCar(String name, int maxPassengers, int maxSpeed, int numWheels, String unitId) {
+        super(name, maxPassengers, maxSpeed);
+        this.numWheels = numWheels;
+        this.unitId = unitId;
     }
 
     @Override
     public void drive() {
-        System.out.println(model + " is driving.");
+        System.out.println("Police car " + unitId + " is patrolling.");
     }
 
     @Override
-    public int getNumberOfWheels() {
-        return numberOfWheels;
+    public int getNumWheels() {
+        return numWheels;
     }
 
     @Override
     public void soundSiren() {
         System.out.println("WEE-OO WEE-OO! Siren activated.");
-        if (hasPoliceLights) {
-            System.out.println("Police car has lights on.");
-        }
-
     }
 
-    public void arrestSuspect(String suspectName) {
-        System.out.println("Suspect " + suspectName + " has been arrested.");
+    public void useRadio() {
+        System.out.println("Unit " + unitId + " reporting in.");
     }
 }
